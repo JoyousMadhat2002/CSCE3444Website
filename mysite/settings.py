@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-kf&djnl+dxlo1p%&nii6sa^c!@*947#yba!42r+(b@m0+9cj1m
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['MFarhat2002.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
