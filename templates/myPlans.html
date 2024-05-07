@@ -1,0 +1,35 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="myPlans">
+    <div class="myPlans-title">
+        <h1>{{ user }}'s Plans</h1>
+    </div>
+
+    <div class="myPlans-container">
+        <div class="myPlans-plans">
+            <p>
+                {% if plans_list %}
+            <ul>
+                {% for plan in plans_list %}
+                {% if plan.user_id == user_id %}
+                <li><a href="{{ plan.id }}/">{{ plan.name }}</a></li>
+                {{ plan.description }}<br>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No plans created</p>
+            {% endif %}
+            </p>
+        </div>
+
+        <div class="myPlans-items">
+            <a href="createPlan/"><button>Create new plan</button></a>
+            <a href="deletePlan/"><button>Delete a plan</button></a>
+            <a href="createWorkout/"><button>Create workout</button></a>
+            <a href="deleteWorkout/"><button>Delete workout</button></a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

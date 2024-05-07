@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<form method="POST" action="{% url 'base:login' %}">
+    
+    <div class="login-registation-wrapper">
+        <img src="{% static 'images/AdaptivDevLogo.png' %}">
+        <h1>AdaptiveFit</h1>
+        <h2>Login</h2>
+
+        {% csrf_token %}
+        <div class="login-registration-input-box">
+            <input type="text" name="username" placeholder="Enter Username">
+            <i class='bx bxs-user'></i>
+        </div>
+
+        <div class="login-registration-input-box">
+            <input name="password" type="password" name="password" placeholder="Enter Password">
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+
+        <div class="remember-forget">
+            <label><input type="checkbox">Remember Me</label>
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn">Login</button>
+
+        <div class="register-link">
+            <p>New to AdaptiveFit? <a href="{% url 'base:register' %}">Register</a></p>
+            <p>Return to Home Page? <a href="{% url 'base:home' %}">Home</a></p>
+        </div>
+    </div>
+</form>
+{% endblock content %}

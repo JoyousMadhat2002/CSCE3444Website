@@ -1,0 +1,63 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="calendar_container">
+    <div class="calendar_left">
+        <div class="calendar">
+            <div class="month">
+                <i class="bx bxs-left-arrow prev"></i>
+                <div class="date">december 2015</div>
+                <i class="bx bxs-right-arrow next"></i>
+            </div>
+            <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="days"></div>
+            <div class="goto-today">
+                <div class="goto">
+                    <input type="text" placeholder="mm/yyyy" class="date-input" />
+                    <button class="goto-btn">Go</button>
+                </div>
+                <button class="today-btn">Today</button>
+            </div>
+        </div>
+    </div>
+    <div class="calendar_right">
+        <div class="today-date">
+            <div class="plan-day"></div>
+            <div class="plan-date"></div>
+        </div>
+        <div class="plans"></div>
+        <div class="add-plan-wrapper">
+            <div class="add-plan-header">
+                <div class="title">Add Plan</div>
+                <i class="bx bx-x-circle close"></i>
+            </div>
+            <div class="add-plan-body">
+                <div class="add-plan-input">
+                    <input type="text" placeholder="Plan Name" class="plan-name" />
+                </div>
+                <div class="add-plan-input">
+                    <input type="text" placeholder="Time From" class="plan-time-from" />
+                </div>
+                <div class="add-plan-input">
+                    <input type="text" placeholder="Time To" class="plan-time-to" />
+                </div>
+            </div>
+            <div class="add-plan-footer">
+                <button class="add-plan-btn">Add Plan</button>
+            </div>
+        </div>
+    </div>
+    <button class="add-plan">
+        <i class="bx bx-plus"></i>
+    </button>
+</div>
+
+{% endblock content %}

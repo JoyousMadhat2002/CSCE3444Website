@@ -1,0 +1,25 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="createPlan">
+    <h1 id="title">Creating Plan with {{ user }}'s workouts</h1>
+    <form action="{% url 'base:create' user_id=user_id %}" method="post">
+        {% csrf_token %}
+        Plan name: <input type="text" name="title">
+        {% if workout_list %}
+        <br>Select workouts to include:
+        <select name="workouts">
+            {% for work in workout_list %}
+            {% if work.user_id == user_id %}
+            <option value="{{ work.id }}">{{ work.title }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <br>Description: <input type="text" name="textfield">
+        {% endif %}
+        <input type="submit" name="Submit" value="Submit">
+        <input type="reset" name="Submit2" value="Reset">
+    </form>
+</div>
+
+{% endblock %}A

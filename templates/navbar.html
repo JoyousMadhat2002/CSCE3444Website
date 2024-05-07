@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <nav>
+        <div class="nav-logo">
+            <a href="{% url 'base:home' %}">
+                <img src="{% static 'images/AdaptivDevLogo.png' %}" alt="AdaptiveFit Logo">
+            </a>
+        </div>
+        <div class="toggle">
+            <a href="#"><i class='bx bx-menu'></i></a>
+        </div>
+        <ul class="menu">
+            <li><a href="{% url 'base:home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'base:dashboard' user_id=user_id %}">Dashboard</a></li>
+                <li><a href="#">Tracker</a></li>
+                <li><a href="{% url 'base:myPlans' user_id=user_id %}">My Plans</a></li>
+                <li><a href="{% url 'base:calendar' user_id=user_id %}">Calendar</a></li>
+                <li><a href="{% url 'base:logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'base:login' %}">Login</a></li>
+                <li><a href="{% url 'base:register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</body>
+{% endblock content %}

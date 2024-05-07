@@ -1,0 +1,45 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="planWorkouts">
+    <div id="title">
+        <p id="desc">{{ plan.name }} Information</p>
+    </div>
+    <p>
+        <!-- check if there is workouts linked with a plan in the entire database-->
+        {% if workoutToPlanList %}
+        <ul>
+            <!-- go through all workouts in the list-->
+            {% for workoutL in workoutToPlanList %}
+                <!-- Check if current plan is the same as given plan id-->
+                {% if workoutL.plan_id == plan_id %}
+                    <!-- Go through all workouts linked to a user in database-->
+                    {% for workoutU in workoutToUserList %}
+                        <!-- Check if current workout is linked to given user-->
+                        {% if workoutU.user_id == user_id %}
+                        {% if workoutL.workout_id == workoutU.id %}
+                            <!-- go through all default workouts in database-->
+                            {% for workoutD in workoutDefaultsList %}
+                                <!-- Check if current default workout is the same as the user linked workout-->
+                                {% if workoutD.id == workoutU.workout_id %}
+                                <!-- Display information-->
+                                    workout id: {{ workoutD.id }}<br>
+                                    workout name:{{ workoutD.name }}<br>
+                                    workout description: {{ workoutD.description }}<br>
+                                    workout instructions: {{ workoutD.instructions }}<br>
+                                    workout time: {{ workoutU.time }} minutes<br>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No workouts in plan</p>
+        {% endif %}
+    </p>     
+</div>
+        
+{% endblock content %}

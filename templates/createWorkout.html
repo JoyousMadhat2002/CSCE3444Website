@@ -1,0 +1,24 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="createWorkout">
+    <h1 id="title">Creating workout with {{ user }}</h1>
+    <form action="{% url 'base:createWork' user_id=user_id %}" method="post">
+        {% csrf_token %}
+        Workout name: <input type="text" name="title">
+        {% if baseWorkout_list %}
+        <br>Select workouts to include:
+        <select name="workouts">
+            {% for work in baseWorkout_list %}
+            <option value="{{ work.id }}">{{ work.name }}</option>
+            {% endfor %}
+        </select>
+        <br>Time: <input type="text" name="textfield"> minutes
+
+        <br>
+        <input type="submit" name="Submit" value="Submit">
+        <input type="reset" name="Submit2" value="Reset">
+        {% endif %}
+    </form>
+</div>
+{% endblock content %}

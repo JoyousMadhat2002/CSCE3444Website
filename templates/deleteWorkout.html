@@ -1,0 +1,24 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="deleteWorkout">
+    <h1 id="title">Deleting workout with {{ user }}</h1>
+    <form action="{% url 'base:deleteWork' user_id=user_id %}" method="post">
+        {% csrf_token %}
+        {% if workoutList %}
+        <br>Select workout to delete:
+        <select name="workout">
+            {% for work in workoutList %}
+            {% if work.user_id == user_id %}
+            <option value="{{ work.id }}">{{ work.title }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" name="Submit" value="Submit">
+        <input type="reset" name="Submit2" value="Reset">
+        {% endif %}
+
+    </form>
+</div>
+{% endblock content %}

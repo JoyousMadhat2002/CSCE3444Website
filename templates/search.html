@@ -1,0 +1,20 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+<center>
+    {% if q %}
+    <h1>Results for {{ q }}</h1>
+    <br />
+    {% for workout in workouts %}
+    {{ workout.name }}<br />
+    {% endfor %}
+
+    {% else %}
+    <h1>Search field empty</h1>
+
+    {% endif %}
+
+</center>
+
+{% endblock %}

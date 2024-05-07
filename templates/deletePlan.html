@@ -1,0 +1,23 @@
+{% include 'navbar.html' %}
+{% load static %}
+{% block content %}
+<div class="deletePlan">
+    <h1 id="title">Delete plan with {{ user }}</h1>
+    <form action="{% url 'base:delete' user_id=user_id %}" method="post">
+        {% csrf_token %}
+        {% if plan_list %}
+        <br>Select plan to delete:
+        <select name="plan">
+            {% for plan in plan_list %}
+                {% if plan.user_id == user_id %}
+                    <option value="{{ plan.id }}">{{ plan.name }}</option>
+                    {% endif %}
+            {% endfor %}
+        </select>
+        {% endif %}
+        <input type="submit" name="Submit" value="Submit">
+        <input type="reset" name="Submit2" value="Reset">
+    </form>
+</div>
+
+{% endblock content %}
